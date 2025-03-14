@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
+import eventImage from '/src/assets/SARU-07.jpg';  // Adjust the path based on the folder structure
 
 export default function RSVPForm() {
   const [attendanceStatus, setAttendanceStatus] = useState(null);
@@ -42,7 +43,7 @@ export default function RSVPForm() {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-10 px-6">
-      <img src="/src/assets/SARU-07.jpg" alt="Event Invitation" className="w-full max-w-3xl rounded-xl shadow-lg mb-6" />
+      <img src={eventImage} alt="Event Invitation" className="w-full max-w-3xl rounded-xl shadow-lg mb-6" />
       <motion.div initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} className="max-w-2xl w-full bg-white p-10 rounded-3xl shadow-2xl">
         <h2 className="text-3xl font-bold text-center text-blue-800">🎤 Speaker Line-up</h2>
         <ul className="list-disc pl-6 text-gray-700 mt-4">
