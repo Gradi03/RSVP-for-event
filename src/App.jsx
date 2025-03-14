@@ -62,13 +62,15 @@ export default function RSVPForm() {
         <div className="mb-6 bg-gray-100 p-4 rounded-lg">
           <h3 className="text-xl font-semibold text-blue-700">🎤 Speaker Line-up</h3>
           <ul className="list-disc pl-6 text-gray-700">
-            <li><strong>Clint Readhead</strong>: SA Rugby concussion management (10:30 – 11:00)</li>
-            <li><strong>Isma-eel Dolie</strong>: Player Welfare and rest arrangements (11:05 – 11:35)</li>
-            <li><strong>Prof Jon Patricios</strong>: Concussion research & management (11:40 – 12:00)</li>
-            <li><strong>Rudi Van Rooyen</strong>: Insurance solutions for players (13:05 – 13:25)</li>
-            <li><strong>Prof Ross Tucker</strong>: IMG technology & player safety (13:30 – 14:00)</li>
+            <li><strong>Clint Readhead</strong>: How SA Rugby manages concussion, focusing on regulations, guidelines, and education. (10:30 – 11:00)</li>
+            <li><strong>Isma-eel Dolie</strong>: Overview of the current SA Rugby Industry Player Welfare and rest arrangements. (11:05 – 11:35)</li>
+            <li><strong>Prof Jon Patricios</strong>: The research and process used to define and manage concussions in sport today. (11:40 – 12:00)</li>
+            <li><strong>Rudi Van Rooyen</strong>: How insurance is helping to ensure a stable and secure income for professional rugby players during injuries. (13:05 – 13:25)</li>
+            <li><strong>Prof Ross Tucker</strong>: The IMG story, explaining how it is used to flag potential concussions and how it may help manage player load in the future. (13:30 – 14:00)</li>
           </ul>
         </div>
+
+        <p className="text-lg text-gray-700 text-center italic mt-4">We look forward to seeing you there and sharing this valuable experience together!<br/><strong>My Players and Hollard Group Risk Team</strong></p>
 
         <h2 className="text-3xl font-bold text-center text-blue-700 mt-8">✨ RSVP Now</h2>
         <p className="text-gray-600 text-center mb-4">Confirm your attendance below</p>
@@ -88,17 +90,9 @@ export default function RSVPForm() {
               <label className="block text-gray-700">Email Address</label>
               <input type="email" name="emailAddress" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Enter your email" required />
             </div>
-            {attendanceStatus === 'Yes' && (
-              <div className="mb-4">
-                <label className="block text-gray-700">Dietary Preferences (Optional)</label>
-                <textarea name="dietaryPreferences" value={dietaryPreferences} onChange={(e) => setDietaryPreferences(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Any dietary requirements?" />
-              </div>
-            )}
             <button type="submit" className="w-full py-3 px-4 bg-blue-700 text-white rounded-lg mt-4 text-lg font-semibold">Submit RSVP</button>
           </motion.form>
         )}
-
-        {formMessage && <div className="mt-4 text-center text-green-600 font-semibold">{formMessage}</div>}
       </motion.div>
     </motion.div>
   );
