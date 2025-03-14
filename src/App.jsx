@@ -6,8 +6,6 @@ export default function RSVPForm() {
   const [attendanceStatus, setAttendanceStatus] = useState(null);
   const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
-  const [dietaryPreferences, setDietaryPreferences] = useState('');
-  const [formMessage, setFormMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,54 +30,39 @@ export default function RSVPForm() {
       const data = await response.json();
 
       if (data.success) {
-        setFormMessage('RSVP submitted successfully!');
         Swal.fire('Success!', 'Your RSVP has been submitted.', 'success');
         event.target.reset();
       } else {
-        setFormMessage(data.message);
         Swal.fire('Error!', data.message, 'error');
       }
     } catch (error) {
-      setFormMessage('An error occurred. Please try again.');
       Swal.fire('Error!', 'Something went wrong. Please try again.', 'error');
     }
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-700 to-blue-900 py-10 px-6">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-10 px-6">
+      <img src="/src/assets/SARU-07.jpg" alt="Event Invitation" className="w-full max-w-3xl rounded-xl shadow-lg mb-6" />
       <motion.div initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} className="max-w-2xl w-full bg-white p-10 rounded-3xl shadow-2xl">
-        <h2 className="text-4xl font-bold text-center text-blue-800">🌟 You're Invited to the Hollard Group Risk Concussion Workshop</h2>
-        <p className="text-center text-gray-600 mt-4 mb-6">Join us for an insightful event featuring top industry experts discussing concussion management in sports.</p>
-        
-        <div className="mb-6 bg-gray-100 p-4 rounded-lg">
-          <h3 className="text-xl font-semibold text-blue-700">📅 Event Details</h3>
-          <p className="text-gray-700">🗓 <strong>Date:</strong> 09 April 2025</p>
-          <p className="text-gray-700">⏰ <strong>Time:</strong> 10:00 AM - 3:00 PM</p>
-          <p className="text-gray-700">📍 <strong>Venue:</strong> The Villa Arcadia, No. 22 Oxford Road, Parktown, 2193</p>
-          <a href="https://maps.google.com/?q=-26.174562,28.041109" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold underline block mt-2 text-center">📍 View on Google Maps</a>
-        </div>
-
-        <div className="mb-6 bg-gray-100 p-4 rounded-lg">
-          <h3 className="text-xl font-semibold text-blue-700">🎤 Speaker Line-up</h3>
-          <ul className="list-disc pl-6 text-gray-700">
-            <li><strong>Clint Readhead</strong>: How SA Rugby manages concussion, focusing on regulations, guidelines, and education. (10:30 – 11:00)</li>
-            <li><strong>Isma-eel Dolie</strong>: Overview of the current SA Rugby Industry Player Welfare and rest arrangements. (11:05 – 11:35)</li>
-            <li><strong>Prof Jon Patricios</strong>: The research and process used to define and manage concussions in sport today. (11:40 – 12:00)</li>
-            <li><strong>Rudi Van Rooyen</strong>: How insurance is helping to ensure a stable and secure income for professional rugby players during injuries. (13:05 – 13:25)</li>
-            <li><strong>Prof Ross Tucker</strong>: The IMG story, explaining how it is used to flag potential concussions and how it may help manage player load in the future. (13:30 – 14:00)</li>
-          </ul>
-        </div>
-
-        <p className="text-lg text-gray-700 text-center italic mt-4">We look forward to seeing you there and sharing this valuable experience together!<br/><strong>My Players and Hollard Group Risk Team</strong></p>
-
+        <h2 className="text-3xl font-bold text-center text-blue-800">🎤 Speaker Line-up</h2>
+        <ul className="list-disc pl-6 text-gray-700 mt-4">
+          <li><strong>Clint Readhead</strong> - 10:30 – 11:00</li>
+          <li><strong>Isma-eel Dolie</strong> - 11:05 – 11:35</li>
+          <li><strong>Prof Jon Patricios</strong> - 11:40 – 12:00</li>
+          <li><strong>Rudi Van Rooyen</strong> - 13:05 – 13:25</li>
+          <li><strong>Prof Ross Tucker</strong> - 13:30 – 14:00</li>
+        </ul>
+        <h2 className="text-3xl font-bold text-center text-blue-700 mt-8">📍 Event Location</h2>
+        <p className="text-gray-700 text-center">📅 Date: 09 April 2025</p>
+        <p className="text-gray-700 text-center">⏰ Time: 10:00 AM to 3:00 PM</p>
+        <p className="text-gray-700 text-center">📍 Venue: The Villa Arcadia, No. 22 Oxford Road, Parktown, 2193</p>
+        <a href="https://maps.google.com/?q=-26.174562,28.041109" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline mt-2 block text-center">View on Google Maps</a>
         <h2 className="text-3xl font-bold text-center text-blue-700 mt-8">✨ RSVP Now</h2>
         <p className="text-gray-600 text-center mb-4">Confirm your attendance below</p>
-
         <div className="mb-6 flex justify-center gap-6">
           <button onClick={() => setAttendanceStatus('Yes')} className={`px-6 py-3 rounded-lg border ${attendanceStatus === 'Yes' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600 border-blue-600'}`}>✅ Attending</button>
           <button onClick={() => setAttendanceStatus('No')} className={`px-6 py-3 rounded-lg border ${attendanceStatus === 'No' ? 'bg-red-600 text-white' : 'bg-white text-red-600 border-red-600'}`}>❌ Not Attending</button>
         </div>
-
         {attendanceStatus && (
           <motion.form initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} onSubmit={handleSubmit} className="mt-4">
             <div className="mb-4">
