@@ -7,6 +7,7 @@ export default function RSVPForm() {
   const [attendanceStatus, setAttendanceStatus] = useState(null);
   const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
+  const [dietaryRequirements, setDietaryRequirements] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,6 +23,7 @@ export default function RSVPForm() {
     const formData = new FormData(event.target);
     formData.append('access_key', 'e4ed5312-c63a-4b40-9e85-f92aa6fde0d4');
     formData.append('attendanceStatus', attendanceStatus);
+    if (dietaryRequirements) formData.append('dietaryRequirements', dietaryRequirements);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -64,7 +66,26 @@ export default function RSVPForm() {
           <button onClick={() => setAttendanceStatus('Yes')} className={`px-6 py-3 rounded-lg border ${attendanceStatus === 'Yes' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600 border-blue-600'}`}>✅ Attending</button>
           <button onClick={() => setAttendanceStatus('No')} className={`px-6 py-3 rounded-lg border ${attendanceStatus === 'No' ? 'bg-red-600 text-white' : 'bg-white text-red-600 border-red-600'}`}>❌ Not Attending</button>
         </div>
-        {attendanceStatus && (
+
+        {attendanceStatus === 'Yes' && (
+          <motion.form initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} onSubmit={handleSubmit} className="mt-4">
+            <div className="mb-4">
+              <label className="block text-gray-700">Full Name</label>
+              <input type="text" name="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Enter your name" required />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700">Email Address</label>
+              <input type="email" name="emailAddress" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Enter your email" required />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700">Dietary Requirements (Optional)</label>
+              <input type="text" name="dietaryRequirements" value={dietaryRequirements} onChange={(e) => setDietaryRequirements(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Enter dietary requirements" />
+            </div>
+            <button type="submit" className="w-full py-3 px-4 bg-blue-700 text-white rounded-lg mt-4 text-lg font-semibold">Submit RSVP</button>
+          </motion.form>
+        )}
+
+        {attendanceStatus === 'No' && (
           <motion.form initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} onSubmit={handleSubmit} className="mt-4">
             <div className="mb-4">
               <label className="block text-gray-700">Full Name</label>
