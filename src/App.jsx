@@ -46,58 +46,59 @@ export default function RSVPForm() {
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-10 px-6">
-      <motion.div initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} className="max-w-lg w-full bg-white p-8 rounded-xl shadow-md">
-        <h2 className="text-2xl font-bold text-center text-blue-700">Event Details</h2>
-        <div className="mt-4 text-gray-700 text-center">
-          <h3 className="text-lg font-semibold">📢 Speaker Schedule</h3>
-          <ul className="mt-2">
-            <li>🔹 Clint - 10:30 - 11:00</li>
-            <li>🔹 Isma - 11:05 - 11:35</li>
-            <li>🔹 Prof Jon - 11:40 - 12:00</li>
-            <li>🔹 Rudi - 13:05 - 13:25</li>
-            <li>🔹 Prof Ross - 13:30 - 14:00</li>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-700 to-blue-900 py-10 px-6">
+      <motion.div initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} className="max-w-2xl w-full bg-white p-10 rounded-3xl shadow-2xl">
+        <h2 className="text-4xl font-bold text-center text-blue-800">🌟 You're Invited to the Hollard Group Risk Concussion Workshop</h2>
+        <p className="text-center text-gray-600 mt-4 mb-6">Join us for an insightful event featuring top industry experts discussing concussion management in sports.</p>
+        
+        <div className="mb-6 bg-gray-100 p-4 rounded-lg">
+          <h3 className="text-xl font-semibold text-blue-700">📅 Event Details</h3>
+          <p className="text-gray-700">🗓 <strong>Date:</strong> 09 April 2025</p>
+          <p className="text-gray-700">⏰ <strong>Time:</strong> 10:00 AM - 3:00 PM</p>
+          <p className="text-gray-700">📍 <strong>Venue:</strong> The Villa Arcadia, No. 22 Oxford Road, Parktown, 2193</p>
+          <a href="https://maps.google.com/?q=-26.174562,28.041109" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold underline block mt-2 text-center">📍 View on Google Maps</a>
+        </div>
+
+        <div className="mb-6 bg-gray-100 p-4 rounded-lg">
+          <h3 className="text-xl font-semibold text-blue-700">🎤 Speaker Line-up</h3>
+          <ul className="list-disc pl-6 text-gray-700">
+            <li><strong>Clint Readhead</strong>: SA Rugby concussion management (10:30 – 11:00)</li>
+            <li><strong>Isma-eel Dolie</strong>: Player Welfare and rest arrangements (11:05 – 11:35)</li>
+            <li><strong>Prof Jon Patricios</strong>: Concussion research & management (11:40 – 12:00)</li>
+            <li><strong>Rudi Van Rooyen</strong>: Insurance solutions for players (13:05 – 13:25)</li>
+            <li><strong>Prof Ross Tucker</strong>: IMG technology & player safety (13:30 – 14:00)</li>
           </ul>
         </div>
 
-        <div className="text-center mt-6">
-          <h3 className="text-lg font-semibold">📍 Event Location</h3>
-          <p className="text-gray-700">Villa Arcadia, Parktown, Johannesburg, 2193</p>
-          <a href="https://maps.google.com/?q=-26.174562,28.041109" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline mt-2 inline-block">View on Google Maps</a>
-        </div>
-
-        <h2 className="text-2xl font-bold text-center text-blue-700 mt-8">RSVP for the Event</h2>
+        <h2 className="text-3xl font-bold text-center text-blue-700 mt-8">✨ RSVP Now</h2>
         <p className="text-gray-600 text-center mb-4">Confirm your attendance below</p>
 
-        <div className="mb-6 text-center">
-          <button onClick={() => setAttendanceStatus('Yes')} className={`px-4 py-2 rounded-lg border ${attendanceStatus === 'Yes' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600 border-blue-600'} mr-4`}>Yes</button>
-          <button onClick={() => setAttendanceStatus('No')} className={`px-4 py-2 rounded-lg border ${attendanceStatus === 'No' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600 border-blue-600'}`}>No</button>
+        <div className="mb-6 flex justify-center gap-6">
+          <button onClick={() => setAttendanceStatus('Yes')} className={`px-6 py-3 rounded-lg border ${attendanceStatus === 'Yes' ? 'bg-blue-600 text-white' : 'bg-white text-blue-600 border-blue-600'}`}>✅ Attending</button>
+          <button onClick={() => setAttendanceStatus('No')} className={`px-6 py-3 rounded-lg border ${attendanceStatus === 'No' ? 'bg-red-600 text-white' : 'bg-white text-red-600 border-red-600'}`}>❌ Not Attending</button>
         </div>
 
         {attendanceStatus && (
           <motion.form initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} onSubmit={handleSubmit} className="mt-4">
             <div className="mb-4">
               <label className="block text-gray-700">Full Name</label>
-              <input type="text" name="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} className="w-full px-4 py-2 border rounded-lg mt-2" placeholder="Enter your name" required />
+              <input type="text" name="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Enter your name" required />
             </div>
             <div className="mb-4">
               <label className="block text-gray-700">Email Address</label>
-              <input type="email" name="emailAddress" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} className="w-full px-4 py-2 border rounded-lg mt-2" placeholder="Enter your email" required />
+              <input type="email" name="emailAddress" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Enter your email" required />
             </div>
             {attendanceStatus === 'Yes' && (
               <div className="mb-4">
                 <label className="block text-gray-700">Dietary Preferences (Optional)</label>
-                <textarea name="dietaryPreferences" value={dietaryPreferences} onChange={(e) => setDietaryPreferences(e.target.value)} className="w-full px-4 py-2 border rounded-lg mt-2" placeholder="Any dietary requirements?" />
+                <textarea name="dietaryPreferences" value={dietaryPreferences} onChange={(e) => setDietaryPreferences(e.target.value)} className="w-full px-4 py-3 border rounded-lg mt-2" placeholder="Any dietary requirements?" />
               </div>
             )}
-            {attendanceStatus === 'No' && (
-              <p className="text-red-500 text-center">Please fill out the form to confirm your non-attendance.</p>
-            )}
-            <button type="submit" className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg mt-4">Submit RSVP</button>
+            <button type="submit" className="w-full py-3 px-4 bg-blue-700 text-white rounded-lg mt-4 text-lg font-semibold">Submit RSVP</button>
           </motion.form>
         )}
 
-        {formMessage && <div className="mt-4 text-center text-gray-700">{formMessage}</div>}
+        {formMessage && <div className="mt-4 text-center text-green-600 font-semibold">{formMessage}</div>}
       </motion.div>
     </motion.div>
   );
