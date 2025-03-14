@@ -48,13 +48,21 @@ export default function RSVPForm() {
       <img src={eventImage} alt="Event Invitation" className="w-full max-w-3xl rounded-xl shadow-lg mb-6" />
       <motion.div initial={{ y: -20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} className="max-w-2xl w-full bg-white p-10 rounded-3xl shadow-2xl">
         <h2 className="text-3xl font-bold text-center text-blue-800">🎤 Speaker Line-up</h2>
-        <ul className="list-disc pl-6 text-gray-700 mt-4">
+        {/* <ul className="list-disc pl-6 text-gray-700 mt-4">
           <li><strong>Clint Readhead</strong> - 10:30 – 11:00</li>
           <li><strong>Isma-eel Dolie</strong> - 11:05 – 11:35</li>
           <li><strong>Prof Jon Patricios</strong> - 11:40 – 12:00</li>
           <li><strong>Rudi Van Rooyen</strong> - 13:05 – 13:25</li>
           <li><strong>Prof Ross Tucker</strong> - 13:30 – 14:00</li>
-        </ul>
+        </ul> */}
+        <ul className="list-none text-center text-gray-700 mt-4">
+  <li><strong>Clint Readhead</strong> - 10:30 – 11:00</li>
+  <li><strong>Isma-eel Dolie</strong> - 11:05 – 11:35</li>
+  <li><strong>Prof Jon Patricios</strong> - 11:40 – 12:00</li>
+  <li><strong>Rudi Van Rooyen</strong> - 13:05 – 13:25</li>
+  <li><strong>Prof Ross Tucker</strong> - 13:30 – 14:00</li>
+</ul>
+
         <h2 className="text-3xl font-bold text-center text-blue-700 mt-8">📍 Event Location</h2>
         <p className="text-gray-700 text-center">📅 Date: 09 April 2025</p>
         <p className="text-gray-700 text-center">⏰ Time: 10:00 AM to 3:00 PM</p>
